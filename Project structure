@@ -1,0 +1,31 @@
+OrangeHRM-Automation/
+ ├─ src/
+ │   ├─ main/
+ │   │   └─ java/
+ │   │       ├─ base/
+ │   │       │   └─ BaseTest.java
+ │   │       ├─ pages/
+ │   │       │   ├─ LoginPage.java
+ │   │       │   └─ EmployeePage.java
+ │   │       └─ utils/
+ │   │           └─ EmailUtil.java
+ │   └─ test/
+ │       └─ java/
+ │           ├─ hooks/
+ │           │   ├─ Hooks.java
+ │           │   └─ TestSuiteHooks.java
+ │           ├─ runners/
+ │           │   └─ TestRunner.java
+ │           └─ stepDefinitions/
+ │               └─ LoginAndLeaveSteps.java
+ ├─ src/test/resources/
+ │   ├─ features/
+ │   │   └─ Orange.feature
+ │   └─ extent.properties
+ ├─ drivers/                <-- optional for chromedriver
+ ├─ Reports/
+ ├─ Screenshots/
+ ├─ test-output/
+ ├─ pom.xml
+ ├─ .gitignore
+ └─ README.md
