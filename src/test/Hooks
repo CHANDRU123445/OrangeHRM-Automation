@@ -1,0 +1,19 @@
+package hooks;
+
+import Pages.BaseClass;
+import io.cucumber.java.Before;
+import io.cucumber.java.After;
+
+public class Hooks {
+
+    @Before
+    public void setUp() {
+        System.out.println("🚀 Starting Scenario...");
+    }
+
+    @After
+    public void tearDown() {
+        BaseClass.closeBrowser();
+        System.out.println("🛑 Scenario Finished, Browser Closed");
+    }
+}
