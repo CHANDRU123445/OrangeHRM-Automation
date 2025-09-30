@@ -1,0 +1,17 @@
+package hooks;
+
+import org.testng.annotations.AfterSuite;
+import Pages.EmailUtil;
+
+public class TestSuiteHooks {
+
+    @AfterSuite
+    public void sendEmailAfterSuite() {
+        String htmlReportPath = System.getProperty("user.dir") + "/Reports/CucumberReport.html";
+        String pdfReportPath  = System.getProperty("user.dir") + "/Reports/PdfReport/ExtentReport.pdf";
+        String recipient = "chandrubalu1998@gmail.com";
+
+        EmailUtil.sendEmailWithReports(recipient, htmlReportPath, pdfReportPath);
+        System.out.println("📧 Email sent with reports!");
+    }
+}
