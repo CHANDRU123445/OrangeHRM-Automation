@@ -1,0 +1,15 @@
+Feature: OrangeHRM Automation
+
+  Scenario: Login to OrangeHRM
+    Given User is on the login page
+    When User enters username "Admin" and password "admin123"
+    And Clicks on login button
+    Then User should be logged in successfully
+
+  Scenario: Add multiple employees and verify
+    Given User is on the login page
+    When User enters username "Admin" and password "admin123"
+    And Clicks on login button
+    Then User should be logged in successfully
+    When User adds multiple employees
+    Then User logs out from the dashboard
