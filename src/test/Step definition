@@ -1,0 +1,132 @@
+//package stepDefinitions;
+//
+//import io.cucumber.java.en.*;
+//import org.openqa.selenium.WebDriver;
+//import Pages.BaseClass;
+//import Pages.LoginPage;
+//import Pages.EmployeePage;
+//
+//import static org.junit.Assert.assertTrue;
+//
+//public class LoginAndLeaveSteps {
+//
+//    WebDriver driver;
+//    LoginPage loginPage;
+//    EmployeePage employeePage;
+//
+//    // test data (you can change these names as needed)
+//    String[][] employees = {
+//            {"Chandru", "B"},
+//            {"Siva", "Kumar"},
+//            {"Varsha", "C"}
+//    };
+//
+//    @Given("User is on the login page")
+//    public void user_is_on_the_login_page() {
+//        driver = BaseClass.getDriver();
+//        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+//        loginPage = new LoginPage(driver);
+//        employeePage = new EmployeePage(driver);
+//    }
+//
+//    @When("User enters username {string} and password {string}")
+//    public void user_enters_username_and_password(String username, String password) {
+//        loginPage.enterUsername(username);
+//        loginPage.enterPassword(password);
+//    }
+//
+//    @When("Clicks on login button")
+//    public void clicks_on_login_button() {
+//        loginPage.clickLogin();
+//    }
+//
+//    @Then("User should be logged in successfully")
+//    public void user_should_be_logged_in_successfully() {
+//        assertTrue("Login failed", loginPage.isLoginSuccessful());
+//    }
+//
+//    @When("User adds multiple employees")
+//    public void user_adds_multiple_employees() {
+//        employeePage.addMultipleEmployees(employees);
+//    }
+//
+//    @Then("All added employees should be visible in the employee list")
+//    public void all_added_employees_should_be_visible_in_the_employee_list() throws Exception {
+//    	employeePage.verifyEmployeesInList();
+//        employeePage.searchScrollScreenshotResetAllEmployees(employees);
+//        // ✅ Now verify after adding
+//        employeePage.verifyAllAddedEmployees();
+// 
+//    }
+//
+//    @Then("User logs out from the dashboard")
+//    public void user_logs_out_from_the_dashboard() {
+//        employeePage.logout();
+//        BaseClass.quitDriver();
+//    }
+//}
+package stepDefinitions;
+
+import io.cucumber.java.en.*;
+import org.openqa.selenium.WebDriver;
+import Pages.BaseClass;
+import Pages.LoginPage;
+import Pages.EmployeePage;
+
+import static org.junit.Assert.assertTrue;
+
+public class LoginAndLeaveSteps {
+
+    WebDriver driver;
+    LoginPage loginPage;
+    EmployeePage employeePage;
+
+    // Test data (you can change these names as needed)
+    String[][] employees = {
+            {"Chandru", "B"},
+            {"Siva", "Kumar"},
+            {"Varsha", "C"}
+    };
+
+    @Given("User is on the login page")
+    public void user_is_on_the_login_page() {
+        driver = BaseClass.getDriver();
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        loginPage = new LoginPage(driver);
+        employeePage = new EmployeePage(driver);
+    }
+
+    @When("User enters username {string} and password {string}")
+    public void user_enters_username_and_password(String username, String password) {
+        loginPage.enterUsername(username);
+        loginPage.enterPassword(password);
+    }
+
+    @When("Clicks on login button")
+    public void clicks_on_login_button() {
+        loginPage.clickLogin();
+    }
+
+    @Then("User should be logged in successfully")
+    public void user_should_be_logged_in_successfully() {
+        assertTrue("Login failed", loginPage.isLoginSuccessful());
+    }
+
+    @When("User adds multiple employees")
+    public void user_adds_multiple_employees() {
+        employeePage.addMultipleEmployees(employees);
+    }
+
+    @Then("All added employees should be visible in the employee list")
+    public void all_added_employees_should_be_visible_in_the_employee_list() throws Exception {
+        // ✅ Navigate to Employee List and verify each added employee
+        employeePage.verifyAllAddedEmployeesInList();
+    }
+
+    @Then("User logs out from the dashboard")
+    public void user_logs_out_from_the_dashboard() {
+        employeePage.logout();
+        BaseClass.quitDriver();
+    }
+}
+
